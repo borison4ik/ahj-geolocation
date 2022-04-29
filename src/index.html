@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <div class="container">
+    <div class="app mt-5" id="app">
+      <div class="time-line" id="time-line">
+      </div>
+      <div class="mb-3">
+        <form id="form">
+          <label for="text" class="form-label">Текстовое сообщение</label>
+          <input type="text" class="form-control" id="text" placeholder="текст" required>
+        </form>
+      </div>
+      <div class="d-flex justify-content-between">
+        <div class="mb-3">
+          <button type="button" class="btn btn-primary" id="micro">Микрофон</button>
+        </div>
+        <div class="micro-controls mb-3 visually-hidden" id="micro-controls">
+          <button type="button" class="btn btn-primary" id="microApply">apply</button>
+          <span id="microTime">00:00:00</span>
+          <button type="button" class="btn btn-primary" id="microStop">stop</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="modal" id="coordsModal" tabindex="-1">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <form id="formCoords">
+          <div class="modal-header">
+            <h5 class="modal-title">Что-то пошло не так</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <p class="mb-3">К сожалению нам не удалось определить ваше местоположение, 
+              пожалуйста, дайте разрешение на использование геолокации, либо введите координаты вручную.</p>
+              <label for="text" class="form-label">Широта и долгота через запятую</label>
+              <input type="text" class="form-control" id="inputCoords" placeholder="55.75583, 37.61730" required>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Закрыть</button>
+            <button type="submit" class="btn btn-primary">Отправить</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
