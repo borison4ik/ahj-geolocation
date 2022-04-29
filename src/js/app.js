@@ -1,4 +1,5 @@
 import { Timer } from 'easytimer.js';
+import isValid from './utils/isValid';
 
 import Modal from '../../node_modules/bootstrap/js/src/modal';
 
@@ -35,7 +36,7 @@ window.onload = () => {
   let stream = null;
   let recorder = null;
   let chunks = [];
-  let audioURL = null;
+  let audio = null;
 
   // micro record
   async function onMicroBtnClick() {
@@ -63,7 +64,7 @@ window.onload = () => {
       timer.stop();
       microTime.textContent = '00:00:00';
       const blob = new Blob(chunks);
-      const audio = document.createElement('audio');
+      audio = document.createElement('audio');
       audio.setAttribute('controls', true);
       audio.src = URL.createObjectURL(blob);
       const time = getTime();
@@ -100,12 +101,12 @@ window.onload = () => {
 
     if (isValid(value)) {
       console.log(value);
-      const formatedCoords = formatCoords(value);
+      formatCoords(value);
       const text = inputText.value;
       const time = getTime();
 
       setTimeout(() => {
-        addMessage(COORDS, time, text);
+        addMessage({ coords: COORDS, time, text, audio });
         inputText.value = '';
         inputCoords.value = '';
         coordsModal.hide();
@@ -148,11 +149,6 @@ window.onload = () => {
       inputCoords.classList.add('is-invalid');
       inputCoords.classList.remove('is-valid');
     }
-  }
-
-  function isValid(val) {
-    const reg = /^\[?\d{2}.\d{5}, ?-?\d{2}.\d{5}\]?/gm;
-    return reg.test(String(val));
   }
 
   function getCoords() {
