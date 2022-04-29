@@ -1,5 +1,6 @@
-import Modal from '../../node_modules/bootstrap/js/src/modal';
 import { Timer } from 'easytimer.js';
+
+import Modal from '../../node_modules/bootstrap/js/src/modal';
 
 import '../../node_modules/bootstrap/scss/bootstrap.scss';
 import '../css/style.scss';
